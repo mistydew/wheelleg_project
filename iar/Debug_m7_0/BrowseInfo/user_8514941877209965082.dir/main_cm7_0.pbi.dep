@@ -218,4 +218,5 @@ D:\car_race\W11_attitude_quaternion_test\iar\Debug_m7_0\BrowseInfo\user_85149418
   D:\car_race\W11_attitude_quaternion_test\iar\project_config\..\..\..\libraries\zf_components\seekfree_assistant.h \
   D:\car_race\W11_attitude_quaternion_test\iar\project_config\..\..\..\libraries\zf_components\seekfree_assistant_interface.h \
   D:\car_race\W11_attitude_quaternion_test\iar\project_config\..\..\code\app_imu.h \
-  D:\car_race\W11_attitude_quaternion_test\iar\project_config\..\..\code\app_quaternion.h
+  D:\car_race\W11_attitude_quaternion_test\iar\project_config\..\..\code\app_quaternion.h \
+  D:\car_race\W11_attitude_quaternion_test\iar\project_config\..\..\code\app_safety.h

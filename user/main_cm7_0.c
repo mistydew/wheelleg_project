@@ -1,9 +1,10 @@
 #include "zf_common_headfile.h"
 #include "app_imu.h"
 #include "app_quaternion.h"
+#include "app_safety.h"
 
 #define DEBUG_PRINT_MODE_WAVE 1
-#define QUAT_ZERO_STABLE_MS   (500u)
+#define QUAT_ZERO_STABLE_MS   (1000u)
 
 volatile uint8 flag_1ms   = 0;
 volatile uint8 flag_2ms   = 0;
@@ -24,6 +25,7 @@ int main(void)
 
     AppImu_Init();
     AppQuat_Init();
+    AppSafety_Init();
 
     pit_ms_init(PIT_CH0, 1);
 
@@ -68,15 +70,14 @@ int main(void)
         if(flag_10ms)
         {
             flag_10ms = 0;
+            AppSafety_Update();
 
 #if (DEBUG_PRINT_MODE_WAVE == 1)
-            if(g_imu.ready && g_quat.ready)
-            {
-                printf("%d,%d,%d\r\n",
-                       (int)g_quat.pitch_balance_deg,
-                       (int)g_quat.roll_balance_deg,
-                       (int)g_quat.yaw_deg);
-            }
+            printf("%d,%d,%d,%d\r\n",
+                   (int)g_quat.pitch_balance_deg,
+                   (int)g_quat.roll_balance_deg,
+                   (int)g_quat.yaw_deg,
+                   (int)AppSafety_IsSafe());
 #endif
         }
 

@@ -80,11 +80,11 @@ static void AppQuat_UpdateEuler(void)
     sin_pitch = AppQuat_Clamp(sin_pitch, -1.0f, 1.0f);
     g_quat.pitch_deg = asinf(sin_pitch) * APP_QUAT_RAD_TO_DEG;
 
-    g_quat.pitch_balance_deg = g_quat.pitch_deg - g_quat.pitch_zero;
-    g_quat.roll_balance_deg = g_quat.roll_deg - g_quat.roll_zero;
-
     g_quat.yaw_deg = atan2f(2.0f * (q0 * q3 + q1 * q2),
                             1.0f - 2.0f * (q2 * q2 + q3 * q3)) * APP_QUAT_RAD_TO_DEG;
+
+    g_quat.pitch_balance_deg = g_quat.pitch_deg - g_quat.pitch_zero;
+    g_quat.roll_balance_deg = g_quat.roll_deg - g_quat.roll_zero;
 }
 
 static void AppQuat_SetFromAcc(float ax_g, float ay_g, float az_g)

@@ -1134,6 +1134,12 @@
             <name>$PROJ_DIR$\..\..\code\app_quaternion.h</name>
         </file>
         <file>
+            <name>$PROJ_DIR$\..\..\code\app_safety.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\code\app_safety.h</name>
+        </file>
+        <file>
             <name>$PROJ_DIR$\..\..\code\本文件夹作用.txt</name>
         </file>
     </group>
