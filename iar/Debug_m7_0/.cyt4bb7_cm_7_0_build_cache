@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BuildDb>
+    <Tool>
+        <Name>linker</Name>
+        <Parent>
+            <Path>C:\Users\Administrator\我的云端硬盘\long term project\car_compete\Coreboard_Demo\W06_imu963ra_base\iar\project_config\Debug_m7_0\Exe\cyt4bb7_cm_7_0.out</Path>
+            <Output>
+                <Path>C:\Users\Administrator\我的云端硬盘\long term project\car_compete\Coreboard_Demo\W06_imu963ra_base\iar\Debug_m7_0\List\cyt4bb7_cm_7_0.map</Path>
+            </Output>
+        </Parent>
+        <Parent>
+            <Path>D:\W10_wheel_leg_main\iar\project_config\Debug_m7_0\Exe\cyt4bb7_cm_7_0.out</Path>
+            <Output>
+                <Path>D:\W10_wheel_leg_main\iar\Debug_m7_0\List\cyt4bb7_cm_7_0.map</Path>
+            </Output>
+        </Parent>
+        <Parent>
+            <Path>D:\car_race\W10_wheel_leg_main\iar\project_config\Debug_m7_0\Exe\cyt4bb7_cm_7_0.out</Path>
+            <Output>
+                <Path>D:\car_race\W10_wheel_leg_main\iar\Debug_m7_0\List\cyt4bb7_cm_7_0.map</Path>
+            </Output>
+        </Parent>
+        <Parent>
+            <Path>D:\car_race\W11_attitude_quaternion_test\iar\project_config\Debug_m7_0\Exe\cyt4bb7_cm_7_0.out</Path>
+            <Output>
+                <Path>D:\car_race\W11_attitude_quaternion_test\iar\Debug_m7_0\List\cyt4bb7_cm_7_0.map</Path>
+            </Output>
+        </Parent>
+        <Parent>
+            <Path>C:\Users\Administrator\我的云端硬盘\long term project\car_compete\Coreboard_Demo\W10_wheel_leg_main\iar\project_config\Debug_m7_0\Exe\cyt4bb7_cm_7_0.out</Path>
+            <Output>
+                <Path>C:\Users\Administrator\我的云端硬盘\long term project\car_compete\Coreboard_Demo\W10_wheel_leg_main\iar\Debug_m7_0\List\cyt4bb7_cm_7_0.map</Path>
+            </Output>
+        </Parent>
+        <Parent>
+            <Path>D:\google_remotely_save\long term project\car_compete\Coreboard_Demo\W02_uart_base\iar\project_config\Debug_m7_0\Exe\cyt4bb7_cm_7_0.out</Path>
+            <Output>
+                <Path>D:\google_remotely_save\long term project\car_compete\Coreboard_Demo\W02_uart_base\iar\Debug_m7_0\List\cyt4bb7_cm_7_0.map</Path>
+            </Output>
+        </Parent>
+    </Tool>
+</BuildDb>

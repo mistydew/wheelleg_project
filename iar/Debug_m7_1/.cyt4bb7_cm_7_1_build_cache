@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BuildDb>
+    <Tool>
+        <Name>linker</Name>
+        <Parent>
+            <Path>D:\google_remotely_save\long term project\car_compete\Coreboard_Demo\W02_uart_base\iar\project_config\Debug_m7_1\Exe\cyt4bb7_cm_7_1.out</Path>
+            <Output>
+                <Path>D:\google_remotely_save\long term project\car_compete\Coreboard_Demo\W02_uart_base\iar\Debug_m7_1\List\cyt4bb7_cm_7_1.map</Path>
+            </Output>
+        </Parent>
+    </Tool>
+</BuildDb>
