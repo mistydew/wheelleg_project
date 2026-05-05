@@ -3,7 +3,9 @@
 #include "app_quaternion.h"
 #include "app_safety.h"
 
-#define DEBUG_PRINT_MODE_WAVE 1
+#define DEBUG_PRINT_MODE_WAVE      (1)
+#define DEBUG_PRINT_MODE_IMU_RAW   (2)
+#define DEBUG_PRINT_MODE           DEBUG_PRINT_MODE_WAVE
 #define QUAT_ZERO_STABLE_MS   (1000u)
 
 volatile uint8 flag_1ms   = 0;
@@ -19,7 +21,7 @@ int main(void)
     clock_init(SYSTEM_CLOCK_250M);
     debug_init();
 
-#if (DEBUG_PRINT_MODE_WAVE == 0)
+#if (DEBUG_PRINT_MODE != DEBUG_PRINT_MODE_WAVE)
     printf("wheel leg main start\r\n");
 #endif
 
@@ -72,7 +74,7 @@ int main(void)
             flag_10ms = 0;
             AppSafety_Update();
 
-#if (DEBUG_PRINT_MODE_WAVE == 1)
+#if (DEBUG_PRINT_MODE == DEBUG_PRINT_MODE_WAVE)
             printf("%d,%d,%d,%d\r\n",
                    (int)g_quat.pitch_balance_deg,
                    (int)g_quat.roll_balance_deg,
@@ -85,21 +87,21 @@ int main(void)
         {
             flag_100ms = 0;
 
-#if (DEBUG_PRINT_MODE_WAVE == 0)
-            printf("ready:%d quat:%d pitch:%d roll:%d pitch_balance:%d roll_balance:%d yaw:%d gyro_dps:%d,%d,%d acc_mg:%d,%d,%d\r\n",
+#if (DEBUG_PRINT_MODE == DEBUG_PRINT_MODE_IMU_RAW)
+            printf("ready:%d acc_raw:%d,%d,%d gyro_raw:%d,%d,%d acc_mg:%d,%d,%d gyro_dps:%d,%d,%d\r\n",
                    g_imu.ready,
-                   g_quat.ready,
-                   (int)g_quat.pitch_deg,
-                   (int)g_quat.roll_deg,
-                   (int)g_quat.pitch_balance_deg,
-                   (int)g_quat.roll_balance_deg,
-                   (int)g_quat.yaw_deg,
-                   (int)g_imu.gyro_dps[0],
-                   (int)g_imu.gyro_dps[1],
-                   (int)g_imu.gyro_dps[2],
+                   g_imu.acc_raw[0],
+                   g_imu.acc_raw[1],
+                   g_imu.acc_raw[2],
+                   g_imu.gyro_raw[0],
+                   g_imu.gyro_raw[1],
+                   g_imu.gyro_raw[2],
                    (int)(g_imu.acc_g[0] * 1000.0f),
                    (int)(g_imu.acc_g[1] * 1000.0f),
-                   (int)(g_imu.acc_g[2] * 1000.0f));
+                   (int)(g_imu.acc_g[2] * 1000.0f),
+                   (int)g_imu.gyro_dps[0],
+                   (int)g_imu.gyro_dps[1],
+                   (int)g_imu.gyro_dps[2]);
 #endif
         }
     }
