@@ -1435,10 +1435,22 @@
             <name>$PROJ_DIR$\..\..\code\app_attitude.h</name>
         </file>
         <file>
+            <name>$PROJ_DIR$\..\..\code\app_balance.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\code\app_balance.h</name>
+        </file>
+        <file>
             <name>$PROJ_DIR$\..\..\code\app_imu.c</name>
         </file>
         <file>
             <name>$PROJ_DIR$\..\..\code\app_imu.h</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\code\app_servo.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\code\app_servo.h</name>
         </file>
         <file>
             <name>$PROJ_DIR$\..\..\code\本文件夹作用.txt</name>
