@@ -4,6 +4,7 @@
 #include "app_safety.h"
 #include "app_balance.h"
 #include "app_servo.h"
+#include "app_motor.h"
 
 #define DEBUG_PRINT_MODE_WAVE      (1)
 #define DEBUG_PRINT_MODE_IMU_RAW   (2)
@@ -33,6 +34,8 @@ int main(void)
     AppServo_Init();
     AppServo_SetNeutral();
     AppBalance_Init();
+    AppMotor_Init();
+    AppMotor_StopAll();
 
     pit_ms_init(PIT_CH0, 1);
 
@@ -71,21 +74,36 @@ int main(void)
 
         if(flag_2ms)
         {
+            float motor_cmd;
+
             flag_2ms = 0;
             AppSafety_Update();
             AppBalance_Update();
+
+            if(AppSafety_IsSafe())
+            {
+                motor_cmd = (float)BALANCE_MOTOR_SIGN * g_balance.output;
+                AppMotor_SetDuty((int)motor_cmd, (int)motor_cmd);
+            }
+            else
+            {
+                AppMotor_StopAll();
+            }
         }
 
         if(flag_10ms)
         {
             flag_10ms = 0;
+            AppMotor_RequestSpeedFeedback();
 
 #if (DEBUG_PRINT_MODE == DEBUG_PRINT_MODE_WAVE)
-            printf("%d,%d,%d,%d\r\n",
+            printf("%d,%d,%d,%d,%d,%d\r\n",
                    (int)g_quat.pitch_balance_deg,
                    (int)g_balance.gyro_pitch_dps,
+                   (int)g_balance.forward_speed,
                    (int)g_balance.output,
-                   (int)AppSafety_IsSafe());
+                   (int)AppMotor_GetLeftSpeed(),
+                   (int)AppMotor_GetRightSpeed());
 #endif
         }
 
