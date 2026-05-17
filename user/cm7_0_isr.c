@@ -35,6 +35,8 @@
 ********************************************************************************************************************/
 
 #include "zf_common_headfile.h"
+#include "app_motor.h"
+#include "small_driver_uart_control.h"
 
 extern volatile uint8 flag_1ms;
 extern volatile uint8 flag_2ms;
@@ -228,8 +230,8 @@ void uart4_isr (void)
 {
     if(uart_isr_mask(UART_4))            // 串口4接收中断
     {
-
-        uart_receiver_handler();                                                                // 串口接收机回调函数
+        communication_count++;
+        small_driver_control_callback(&small_driver_value);
        
     }
     else                                // 串口4发送中断

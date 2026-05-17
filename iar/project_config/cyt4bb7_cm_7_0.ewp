@@ -1128,6 +1128,12 @@
             <name>$PROJ_DIR$\..\..\code\app_balance.h</name>
         </file>
         <file>
+            <name>$PROJ_DIR$\..\..\code\app_motor.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\code\app_motor.h</name>
+        </file>
+        <file>
             <name>$PROJ_DIR$\..\..\code\app_imu.c</name>
         </file>
         <file>
@@ -1150,6 +1156,12 @@
         </file>
         <file>
             <name>$PROJ_DIR$\..\..\code\app_servo.h</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\code\small_driver_uart_control.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\code\small_driver_uart_control.h</name>
         </file>
         <file>
             <name>$PROJ_DIR$\..\..\code\本文件夹作用.txt</name>
