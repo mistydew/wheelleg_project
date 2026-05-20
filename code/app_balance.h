@@ -11,10 +11,10 @@
 #define BALANCE_OUTPUT_LIMIT       (5000.0f)
 #endif
 #ifndef SPEED_LEFT_SIGN
-#define SPEED_LEFT_SIGN            (1.0f)
+#define SPEED_LEFT_SIGN            (-1.0f)
 #endif
 #ifndef SPEED_RIGHT_SIGN
-#define SPEED_RIGHT_SIGN           (1.0f)
+#define SPEED_RIGHT_SIGN           ( 1.0f)
 #endif
 
 typedef struct
@@ -24,6 +24,7 @@ typedef struct
     float pitch_target_deg;
     float pitch_error_deg;
     float gyro_pitch_dps;
+    float angle_output;
     float forward_speed;
     float kv_speed;
     float speed_output;

@@ -28,13 +28,15 @@ static void AppBalance_ApplyMotorOutput(float output)
 
 void AppBalance_Init(void)
 {
-    g_balance.kp_angle = 22.0f;
-    g_balance.kd_gyro = 0.8f;
-    g_balance.pitch_target_deg = 0.0f;
+    g_balance.kp_angle = 21.34f;
+    g_balance.kd_gyro = 0.896f;
+    g_balance.pitch_target_deg = -0.6f;
     g_balance.pitch_error_deg = 0.0f;
     g_balance.gyro_pitch_dps = 0.0f;
+    g_balance.angle_output = 0.0f;
     g_balance.forward_speed = 0.0f;
-    g_balance.kv_speed = 0.005f;
+    /* Speed feedback signs are unified below, so kv_speed must be re-tuned per feedback unit. */
+    g_balance.kv_speed = 0.8f;
     g_balance.speed_output = 0.0f;
     g_balance.output = 0.0f;
     g_balance.output_limit = BALANCE_OUTPUT_LIMIT;
@@ -45,13 +47,13 @@ void AppBalance_Init(void)
 
 void AppBalance_Update(void)
 {
-    float angle_output;
     float output;
     float left_speed;
     float right_speed;
 
     if(!g_balance.ready)
     {
+        g_balance.angle_output = 0.0f;
         g_balance.forward_speed = 0.0f;
         g_balance.speed_output = 0.0f;
         g_balance.output = 0.0f;
@@ -64,6 +66,7 @@ void AppBalance_Update(void)
 
     if(!AppSafety_IsSafe())
     {
+        g_balance.angle_output = 0.0f;
         g_balance.forward_speed = 0.0f;
         g_balance.speed_output = 0.0f;
         g_balance.output = 0.0f;
@@ -75,11 +78,12 @@ void AppBalance_Update(void)
     right_speed = SPEED_RIGHT_SIGN * (float)AppMotor_GetRightSpeed();
     g_balance.forward_speed = 0.5f * (left_speed + right_speed);
 
-    angle_output = g_balance.kp_angle * g_balance.pitch_error_deg -
-                   g_balance.kd_gyro * g_balance.gyro_pitch_dps;
+    g_balance.angle_output = g_balance.kp_angle * g_balance.pitch_error_deg -
+                             g_balance.kd_gyro * g_balance.gyro_pitch_dps;
     g_balance.speed_output = -g_balance.kv_speed * g_balance.forward_speed;
-    output = angle_output + g_balance.speed_output;
+    output = g_balance.angle_output + g_balance.speed_output;
 
+    /* If output_limit is 600 and output stays at +/-600, test 800 or 1000 next. */
     g_balance.output = AppBalance_Limit(output, g_balance.output_limit);
     AppBalance_ApplyMotorOutput(g_balance.output);
 }
